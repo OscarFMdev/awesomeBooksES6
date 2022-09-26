@@ -1,5 +1,6 @@
 import * as s from './selectors.js';
-import {collection} from '../index.js';
+import { collection } from '../index.js';
+import { DateTime } from "./luxon.js";
 /* Book constructor */
 function Book(name, author) {
   this.name = name;
@@ -38,4 +39,11 @@ function contactSelected() {
   s.contactNav.style.color = 'blue';
 }
 
-export { Book, listSelected, addSelected, contactSelected };
+function refreshTime() {
+  const dateString = DateTime.now().toRFC2822();
+  s.timeDisplay.textContent = dateString;
+}
+
+setInterval(refreshTime, 1000);
+
+export { Book, listSelected, addSelected, contactSelected, refreshTime };

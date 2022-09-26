@@ -1,6 +1,7 @@
 import Collection from "./modules/Collection.js";
 import * as f from "./modules/functions.js";
 import * as s from "./modules/selectors.js";
+import { DateTime } from "./modules/luxon.js";
 
 export const collection = new Collection();
 /* Displays books on DOM loaded */
@@ -19,3 +20,6 @@ s.listNav.addEventListener('click', f.listSelected);
 s.addNav.addEventListener('click', f.addSelected);
 s.contactNav.addEventListener('click', f.contactSelected);
 window.addEventListener('load', f.listSelected);
+
+/* Header time */
+f.refreshTime();
