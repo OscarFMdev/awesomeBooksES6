@@ -1,12 +1,19 @@
-import { Book } from "./functions.js";
-import * as s from "./selectors.js";
+const bookList = document.querySelector('.book-list');
+const bookName = document.querySelector('.book-name');
+const author = document.querySelector('.author');
+
+/* Book constructor */
+function Book(name, author) {
+  this.name = name;
+  this.author = author;
+}
 export default class Collection {
   constructor() {
     this.booksArray = JSON.parse(localStorage.getItem('books')) || [];
   }
 
   displayBooks() {
-    s.bookList.innerHTML = this.booksArray.map((book, i) => `
+    bookList.innerHTML = this.booksArray.map((book, i) => `
       <li class="book element-${i % 2}">
         <div class="text">
         <h2 class="book-info">"${book.name}" by ${book.author}</h2>
@@ -18,7 +25,7 @@ export default class Collection {
 
   addBook(e) {
     e.preventDefault();
-    const bookItem = new Book(s.bookName.value, s.author.value);
+    const bookItem = new Book(bookName.value, author.value);
     this.booksArray.push(bookItem);
     localStorage.setItem('books', JSON.stringify(this.booksArray));
     this.displayBooks();
