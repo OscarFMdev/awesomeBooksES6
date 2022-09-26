@@ -1,3 +1,5 @@
+import * as s from './selectors.js';
+import {collection} from '../index.js';
 /* Book constructor */
 function Book(name, author) {
   this.name = name;
@@ -7,33 +9,33 @@ function Book(name, author) {
 /* Navigation Functions */
 
 function listSelected() {
-  addPage.style.display = 'none';
-  addNav.style.color = 'black';
-  contactPage.style.display = 'none';
-  contactNav.style.color = 'black';
-  listPage.style.display = 'block';
-  listNav.style.color = 'blue';
+  s.addPage.style.display = 'none';
+  s.addNav.style.color = 'black';
+  s.contactPage.style.display = 'none';
+  s.contactNav.style.color = 'black';
+  s.listPage.style.display = 'block';
+  s.listNav.style.color = 'blue';
   if (collection.booksArray.length === 0) {
-    bookList.innerHTML = '<h2 class="no-books">Your book list is empty</h2>';
+    s.bookList.innerHTML = '<h2 class="no-books">Your book list is empty</h2>';
   }
 }
 
 function addSelected() {
-  listPage.style.display = 'none';
-  listNav.style.color = 'black';
-  contactPage.style.display = 'none';
-  contactNav.style.color = 'black';
-  addPage.style.display = 'flex';
-  addNav.style.color = 'blue';
+  s.listPage.style.display = 'none';
+  s.listNav.style.color = 'black';
+  s.contactPage.style.display = 'none';
+  s.contactNav.style.color = 'black';
+  s.addPage.style.display = 'flex';
+  s.addNav.style.color = 'blue';
 }
 
 function contactSelected() {
-  listPage.style.display = 'none';
-  listNav.style.color = 'black';
-  addPage.style.display = 'none';
-  addNav.style.color = 'black';
-  contactPage.style.display = 'block';
-  contactNav.style.color = 'blue';
+  s.listPage.style.display = 'none';
+  s.listNav.style.color = 'black';
+  s.addPage.style.display = 'none';
+  s.addNav.style.color = 'black';
+  s.contactPage.style.display = 'block';
+  s.contactNav.style.color = 'blue';
 }
 
 export { Book, listSelected, addSelected, contactSelected };
